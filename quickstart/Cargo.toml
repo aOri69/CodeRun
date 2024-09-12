@@ -1,0 +1,11 @@
+[workspace]
+resolver = "2"
+
+[workspace.package]
+version = "1.0.0"
+authors = ["Alex Sokolov"]
+description = "Quick Start excercises from CodeRun"
+documentation = "https://github.com/aOri"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
