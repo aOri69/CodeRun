@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["01_triangle"]
+members = ["01_triangle", "02_ascending_list"]
 
 [workspace.package]
 version = "1.0.0"
