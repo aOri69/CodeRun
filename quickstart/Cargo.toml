@@ -1,0 +1,12 @@
+[workspace]
+resolver = "2"
+members = ["01_triangle", "02_ascending_list", "03_open_calc", "04_word_count", "05_nearest_number"]
+
+[workspace.package]
+version = "1.0.0"
+authors = ["Alex Sokolov"]
+description = "Quick Start excercises from CodeRun"
+documentation = "https://github.com/aOri"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
