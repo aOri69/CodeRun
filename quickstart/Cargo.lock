@@ -15,6 +15,10 @@ name = "open_calc"
 version = "1.0.0"
 
 [[package]]
+name = "symmetric"
+version = "1.0.0"
+
+[[package]]
 name = "triangle"
 version = "1.0.0"
 
