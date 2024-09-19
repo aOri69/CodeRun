@@ -6,50 +6,38 @@ struct MissedElements {
     elements: Vec<usize>,
 }
 
+fn is_symmetric(lhs: &[usize], rhs: &[usize]) -> bool {
+    return lhs == rhs;
+}
+
 fn get_missed_elements(numbers: &[usize]) -> MissedElements {
     let len = numbers.len();
-    for i in 0..len {
-        let mut j = len - i - 1;
-        debug(len, i, j, numbers);
-
-        if numbers[i] != numbers[j] {
-            continue;
+    let mut i = 0;
+    while i != len {
+        let lhs = &numbers[i..len];
+        let rhs = numbers
+            .iter()
+            .rev()
+            .take(len - i)
+            .cloned()
+            .collect::<Vec<_>>();
+        // println!("L= {lhs:?}");
+        // println!("R= {:?}", &rhs);
+        // println!("I= {i}");
+        if is_symmetric(lhs, &rhs) {
+            let result = numbers[..i].iter().rev().cloned().collect::<Vec<_>>();
+            // println!("sym= {:?}", &result);
+            return MissedElements {
+                count: result.len(),
+                elements: result,
+            };
         }
-
-        // for j in (i..len).rev() {
-        //     debug(len, i, j, numbers);
-        //     let lhs = numbers[i];
-        //     let rhs = numbers[j];
-        //     if lhs != rhs {
-        //         break;
-        //     }
-        //     if j == i {
-        //         let result = numbers[..i].iter().cloned().rev().collect::<Vec<_>>();
-        //         return MissedElements {
-        //             count: result.len(),
-        //             elements: result,
-        //         };
-        //     }
-        // }
+        i += 1;
     }
     MissedElements {
         count: 0,
         elements: vec![],
     }
-}
-
-fn debug(len: usize, i: usize, j: usize, numbers: &[usize]) {
-    let mut sel = " ".repeat(len * 2);
-    sel.replace_range(i..i, "v");
-    println!("{0:-<width$}", sel, width = len * 2);
-    println!(
-        "{0:-<width$}",
-        numbers.iter().map(ToString::to_string).collect::<String>(),
-        width = len * 2
-    );
-    sel = " ".repeat(len * 2);
-    sel.replace_range(j..j, "^");
-    println!("{0:-<width$}", sel, width = len * 2);
 }
 
 fn main() {
