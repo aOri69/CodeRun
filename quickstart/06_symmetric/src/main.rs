@@ -7,7 +7,7 @@ struct MissedElements {
 }
 
 fn is_symmetric(lhs: &[usize], rhs: &[usize]) -> bool {
-    return lhs == rhs;
+    lhs == rhs
 }
 
 fn get_missed_elements(numbers: &[usize]) -> MissedElements {
