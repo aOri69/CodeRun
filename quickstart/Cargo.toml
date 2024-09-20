@@ -20,5 +20,9 @@ authors = ["Alex Sokolov"]
 description = "Quick Start excercises from CodeRun"
 documentation = "https://github.com/aOri"
 
+[workspace.dependencies]
+pretty_assertions = "1.4.1"
+rstest = "0.22.0"
+
 [workspace.lints.rust]
 unsafe_code = "forbid"
