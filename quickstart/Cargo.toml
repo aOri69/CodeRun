@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["01_triangle", "02_ascending_list", "03_open_calc", "04_word_count", "05_nearest_number", "06_symmetric"]
+members = ["01_triangle", "02_ascending_list", "03_open_calc", "04_word_count", "05_nearest_number", "06_symmetric", "08_miner"]
 
 [workspace.package]
 version = "1.0.0"
