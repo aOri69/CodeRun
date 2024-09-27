@@ -28,7 +28,7 @@ fn main() {
     let result = number_digits
         .iter()
         .filter(
-            |&digit| match !buttons.contains(&digit) && !buttons_to_add.contains(&digit) {
+            |&digit| match !buttons.contains(digit) && !buttons_to_add.contains(digit) {
                 true => {
                     buttons_to_add.push(*digit);
                     true

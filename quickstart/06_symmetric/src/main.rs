@@ -60,7 +60,7 @@ fn main() {
         .take(element_count)
         .map(|maybe_number| maybe_number.parse::<usize>())
         .map(|maybe_digit| match maybe_digit.ok() {
-            Some(d) if d >= 1 && d <= 9 => Some(d),
+            Some(d) if (1..=9).contains(&d) => Some(d),
             Some(_) => None,
             None => None,
         })
@@ -91,7 +91,7 @@ mod tests {
     #[test]
     fn test_1() {
         assert_eq!(
-            get_missed_elements(&vec![1, 2, 3, 4, 5, 4, 3, 2, 1]),
+            get_missed_elements(&[1, 2, 3, 4, 5, 4, 3, 2, 1]),
             MissedElements {
                 count: 0,
                 elements: vec![]
@@ -102,7 +102,7 @@ mod tests {
     #[test]
     fn test_2() {
         assert_eq!(
-            get_missed_elements(&vec![1, 2, 1, 2, 2]),
+            get_missed_elements(&[1, 2, 1, 2, 2]),
             MissedElements {
                 count: 3,
                 elements: vec![1, 2, 1]
@@ -113,7 +113,7 @@ mod tests {
     #[test]
     fn test_3() {
         assert_eq!(
-            get_missed_elements(&vec![1, 2, 3, 4, 5]),
+            get_missed_elements(&[1, 2, 3, 4, 5]),
             MissedElements {
                 count: 4,
                 elements: vec![4, 3, 2, 1]
