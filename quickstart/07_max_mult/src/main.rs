@@ -24,7 +24,7 @@ fn max_product_of_three_elements(numbers: Vec<i128>) -> [i128; 3] {
     // println!("Start:   {numbers:?}");
 
     for &current_num in &numbers[2..] {
-        println!("--------------------------------------------------");
+        // println!("--------------------------------------------------");
         highest_product_of_3 = match cmp::max(
             highest_product_of_3,
             cmp::max(
@@ -86,10 +86,10 @@ fn max_product_of_three_elements(numbers: Vec<i128>) -> [i128; 3] {
         highest = cmp::max(current_num, highest);
         lowest = cmp::min(current_num, lowest);
 
-        println!("current: [{current_num:?}]");
-        println!("result:  {result:?}");
-        println!("highest: {highest_pair:?}");
-        println!("lowest:  {lowest_pair:?}");
+        // println!("current: [{current_num:?}]");
+        // println!("result:  {result:?}");
+        // println!("highest: {highest_pair:?}");
+        // println!("lowest:  {lowest_pair:?}");
     }
     result
 }
