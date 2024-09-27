@@ -1,16 +1,24 @@
 [workspace]
 resolver = "2"
-members = ["01_triangle", "02_ascending_list", "03_open_calc", "04_word_count", "05_nearest_number", "06_symmetric"]
+members = [
+    "01_triangle",
+    "02_ascending_list",
+    "03_open_calc",
+    "04_word_count",
+    "05_nearest_number",
+    "06_symmetric",
+    "07_max_mult",
+]
+
+[workspace.dependencies]
+pretty_assertions = "1.4.1"
+rstest = "0.22.0"
 
 [workspace.package]
 version = "1.0.0"
 authors = ["Alex Sokolov"]
 description = "Quick Start excercises from CodeRun"
 documentation = "https://github.com/aOri"
-
-[workspace.dependencies]
-pretty_assertions = "1.4.1"
-rstest = "0.22.0"
 
 [workspace.lints.rust]
 unsafe_code = "forbid"
