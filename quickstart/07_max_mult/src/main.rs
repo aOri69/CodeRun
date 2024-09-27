@@ -12,7 +12,7 @@ fn max_product_of_three_elements(numbers: Vec<i128>) -> [i128; 3] {
     // numbers.sort();
 
     let mut highest = cmp::max(numbers[0], numbers[1]);
-    let mut lowest = cmp::max(numbers[0], numbers[1]);
+    let mut lowest = cmp::min(numbers[0], numbers[1]);
     let mut highest_product_of_2 = numbers[0] * numbers[1];
     let mut lowest_product_of_2 = numbers[0] * numbers[1];
     let mut highest_product_of_3 = numbers[0] * numbers[1] * numbers[2];
@@ -24,7 +24,7 @@ fn max_product_of_three_elements(numbers: Vec<i128>) -> [i128; 3] {
     // println!("Start:   {numbers:?}");
 
     for &current_num in &numbers[2..] {
-        // println!("--------------------------------------------------");
+        println!("--------------------------------------------------");
         highest_product_of_3 = match cmp::max(
             highest_product_of_3,
             cmp::max(
@@ -86,10 +86,10 @@ fn max_product_of_three_elements(numbers: Vec<i128>) -> [i128; 3] {
         highest = cmp::max(current_num, highest);
         lowest = cmp::min(current_num, lowest);
 
-        // println!("current: [{current_num:?}]");
-        // println!("result:  {result:?}");
-        // println!("highest: {highest_pair:?}");
-        // println!("lowest:  {lowest_pair:?}");
+        println!("current: [{current_num:?}]");
+        println!("result:  {result:?}");
+        println!("highest: {highest_pair:?}");
+        println!("lowest:  {lowest_pair:?}");
     }
     result
 }
@@ -165,7 +165,7 @@ mod tests {
     #[case("1 2 3 4 5 6", "4 5 6")] // all positive
     #[case("-1 -4 -5 -6 -2 -3", "-1 -2 -3")] // all negative
     #[case("1 2 3 0 5 0", "2 3 5")] // zeros
-    #[case("-1 -2 -3 0 -5 0", "0 -1 -3")] // zeros
+    #[case("-1 -2 -3 0 -5 0", "0 -2 -3")] // zeros
     #[case("0 0 0 0 0 0 0 0 0 0", "0 0 0")] // zeros
     #[case("9 -2 9 0 -5 9", "9 9 9")] // duplicates
     #[case(
@@ -173,6 +173,8 @@ mod tests {
         "999999999 999999999 999999999"
     )] // large numbers
     #[case("1 0 0 0 1", "1 0 0")]
+    #[case("-10 -10 1 3 2", "-10 -10 3")]
+    #[case("-10 1 3 2 -10", "-10 -10 3")]
 
     fn test_fn(#[case] input: &str, #[case] expected: &str) {
         let numbers_input = input
@@ -187,10 +189,7 @@ mod tests {
             .collect::<Result<Vec<_>, _>>()
             .unwrap();
 
-        let mut numbers_result = max_product_of_three_elements(numbers_input)
-            .iter()
-            .cloned()
-            .collect::<Vec<_>>();
+        let mut numbers_result = max_product_of_three_elements(numbers_input).to_vec();
 
         numbers_expected.sort();
         numbers_result.sort();
